@@ -12,24 +12,15 @@ export default defineConfig({
     Vuetify(),
     ViteFonts({
       google: {
-        families: [{
-          name: 'Roboto',
-          styles: 'wght@100;300;400;500;700;900',
-        }],
+        families: ['Roboto:100,300,400,500,700,900'],
       },
     }),
     AutoImport({
-      resolvers: [
-        ElementPlusResolver(),
-      ],
+      resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [
-        ElementPlusResolver(),
-      ],
-      // Enable TypeScript definitions generation
+      resolvers: [ElementPlusResolver()],
       dts: true,
     }),
   ],
-  // Add other Vite configuration options if needed
 });
