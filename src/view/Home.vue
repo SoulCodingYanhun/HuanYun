@@ -1,4 +1,20 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+
+const register = () => {
+  console.log('注册新用户');
+};
+
+const learnMore = () => {
+  console.log('了解更多信息');
+};
+
+const cards = ref([
+  { id: 1, icon: 'mdi-palette', title: '🎨 模板库', description: '我们的模板库拥有丰富多样的设计模板，覆盖各种风格和主题。无论是寻找灵感，还是需要快速启动项目，这里都能满足您的需求。' },
+  { id: 2, icon: 'mdi-account-group', title: '🤝 交流社区', description: '幻云科技的交流社区是一个充满活力的专业社交平台。在这里，您可以与来自世界各地的专业人士和创意人士交流想法，分享经验，共同成长。' },
+  { id: 3, icon: 'mdi-console', title: '🌐 技术支持', description: '我们为前端和后端开发者提供了全面的技术支持。无论您使用的是哪种技术，我们都有专业的资源和团队支持您。' },
+]);
+</script>
 
 <template>
   <v-container class="home" fluid>
@@ -12,34 +28,39 @@
     </v-row>
 
     <v-row>
-      <v-col cols="12" sm="4">
-        <v-card class="pa-4 text-center" elevation="5">
-          <v-icon size="64">mdi-palette</v-icon>
-          <h2>🎨 模板库</h2>
+      <v-col cols="12">
+        <h2 class="text-center">介绍</h2>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" sm="4" v-for="(card, index) in cards" :key="card.id">
+        <v-card class="pa-4 text-center card-hover" elevation="5">
+          <v-icon size="64" aria-hidden="true">{{ card.icon }}</v-icon>
+          <h2>{{ card.title }}</h2>
           <p>
-            我们的模板库拥有丰富多样的设计模板，覆盖各种风格和主题。无论是寻找灵感，还是需要快速启动项目，这里都能满足您的需求。
+            {{ card.description }}
           </p>
         </v-card>
       </v-col>
+    </v-row>
 
-      <v-col cols="12" sm="4">
-        <v-card class="pa-4 text-center" elevation="5">
-          <v-icon size="64">mdi-account-group</v-icon>
-          <h2>🤝 交流社区</h2>
-          <p>
-            幻云科技的交流社区是一个充满活力的专业社交平台。在这里，您可以与来自世界各地的专业人士和创意人士交流想法，分享经验，共同成长。
-          </p>
-        </v-card>
+    <v-row>
+      <v-col cols="12" sm="6">
+        <h2 class="text-center">前端模板语言</h2>
+        <div class="text-center">
+          <v-icon size="64" class="mr-3">mdi-language-html5</v-icon>
+          <v-icon size="64" class="mr-3">mdi-language-css3</v-icon>
+          <v-icon size="64">mdi-language-javascript</v-icon>
+        </div>
       </v-col>
-
-      <v-col cols="12" sm="4">
-        <v-card class="pa-4 text-center" elevation="5">
-          <v-icon size="64">mdi-console</v-icon>
-          <h2>🌐 技术支持</h2>
-          <p>
-            我们为前端和后端开发者提供了全面的技术支持。无论您使用的是哪种技术，我们都有专业的资源和团队支持您。
-          </p>
-        </v-card>
+      <v-col cols="12" sm="6">
+        <h2 class="text-center">后端模板语言</h2>
+        <div class="text-center">
+          <v-icon size="64" class="mr-3">mdi-language-python</v-icon>
+          <v-icon size="64" class="mr-3">mdi-language-php</v-icon>
+          <v-icon size="64">mdi-language-java</v-icon>
+        </div>
       </v-col>
     </v-row>
 
@@ -50,31 +71,13 @@
           幻云科技期待您的加入。让我们一起探索科技的边界，共同创造一个更加美好的未来。
         </p>
         <div class="text-center">
-          <el-button type="primary" @click="register" class="mr-3"
-            >立即注册</el-button
-          >
-          <el-button @click="learnMore">了解更多</el-button>
+          <el-button type="primary" @click="register" class="mr-3">立即注册</el-button>
+          <el-button @click="learnMore" type="button">了解更多</el-button>
         </div>
       </v-col>
     </v-row>
   </v-container>
 </template>
-
-<script>
-export default {
-  name: 'Home',
-  methods: {
-    register() {
-      // 处理注册逻辑或跳转到注册页面
-      console.log('注册新用户');
-    },
-    learnMore() {
-      // 处理了解更多逻辑或跳转到相关页面
-      console.log('了解更多信息');
-    },
-  },
-};
-</script>
 
 <style scoped>
 .home {
@@ -90,11 +93,11 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.v-card {
+.card-hover {
   transition: transform 0.3s ease-in-out;
 }
 
-.v-card:hover {
+.card-hover:hover {
   transform: translateY(-10px);
 }
 
@@ -109,9 +112,30 @@ button {
   margin-bottom: 0.5rem;
 }
 
+/* 优化小屏幕上的卡片间距 */
 @media (max-width: 600px) {
   .v-card {
     margin-bottom: 1rem;
+  }
+}
+
+/* 针对超小屏幕的额外样式调整 */
+@media (max-width: 400px) {
+  .v-card {
+    padding: 8px; /* 减少内边距以适应小屏幕 */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* 减小标题字体大小 */
+  }
+
+  p {
+    font-size: 0.875rem; /* 减小描述字体大小 */
+  }
+
+  button {
+    padding: 8px 16px; /* 减小按钮尺寸 */
+    margin: 5px; /* 减小按钮间距 */
   }
 }
 </style>

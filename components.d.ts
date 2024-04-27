@@ -10,10 +10,5 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VCard: typeof import('vuetify/lib')['VCard']
-    VCol: typeof import('vuetify/lib')['VCol']
-    VContainer: typeof import('vuetify/lib')['VContainer']
-    VIcon: typeof import('vuetify/lib')['VIcon']
-    VRow: typeof import('vuetify/lib')['VRow']
   }
 }
