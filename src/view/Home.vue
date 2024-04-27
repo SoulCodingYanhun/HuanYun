@@ -26,15 +26,43 @@
         </v-card>
       </v-col>
     </v-row>
-
     <v-row>
-      <v-col cols="12" sm="8" md="6">
-        <p class="text-center">我们的前端模板支持分享以下语言：</p>
-        <div class="language-icons">
-          <img v-for="icon in icons" :key="icon.title" :src="`https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
-        </div>
+      <v-col cols="12">
+        <h2 class="text-center">我们的模板支持语言</h2>
       </v-col>
     </v-row>
+
+    <!-- <v-row> -->
+  <v-col cols="12" sm="140">
+    <v-card class="card-hover" elevation="4" weight="100%">
+      <p class="text-center">前端</p>
+      <div class="language-icons">
+        <img v-for="icon in ficons" :key="icon.title" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.13.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
+      </div>
+    </v-card>
+  </v-col>
+
+  <v-col cols="12" sm="140">
+    <v-card class="card-hover" elevation="4" weight="100%">
+      <p class="text-center">后端</p>
+      <div class="language-icons">
+        <img v-for="icon in bicons" :key="icon.title" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.13.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
+      </div>
+    </v-card>
+  </v-col>
+
+  <v-col cols="12" sm="140">
+    <v-card class="card-hover" elevation="4" weight="100%">
+      <p class="text-center">全栈</p>
+      <div class="language-icons">
+        <img v-for="icon in fuicons" :key="icon.title" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.13.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
+      </div>
+    </v-card>
+  </v-col>
+<!-- </v-row> -->
+
+
+
 
     <v-row justify="center" class="mt-5">
       <v-col cols="12" sm="6" md="4">
@@ -68,17 +96,40 @@ const cards = ref([
   { id: 3, icon: '', title: '🌐 技术支持', description: '我们为前端和后端开发者提供了全面的技术支持。无论您使用的是哪种技术，我们都有专业的资源和团队支持您。' },
 ]);
 
-const icons = [
+const ficons = [
   { icon: 'angular', title: 'Angular' },
   { icon: 'react', title: 'React' },
   { icon: 'vuedotjs', title: 'Vue' },
   { icon: 'preact', title: 'Preact' },
   { icon: 'lit', title: 'Lit' },
   { icon: 'svelte', title: 'Svelte' },
-  { icon: 'qwiklabs', title: 'Qwik' },
+  { icon: 'qwik', title: 'Qwik' },
   { icon: 'solid', title: 'Solid' },
   { icon: 'bootstrap', title: 'Bootstrap 5' },
+  { icon: 'javascript', title: 'Javascript' },
+  { icon: 'typescript', title: 'Typescript' },
+  { icon: 'html5', title: 'Static' },
+  { icon: 'emberdotjs', title: 'Ember' },
 ];
+
+const bicons = [
+  { icon: 'nestjs', title: 'Nestjs' },
+  { icon: 'express', title: 'Express' },
+  { icon: 'koa', title: 'Koa' },
+  { icon: 'graphql', title: 'Graphql' },
+];
+
+const fuicons = [
+  { icon:'astro', title: 'Astro Basics'},
+  { icon:'astro', title: 'Astro Minimal'},
+  { icon:'nextdotjs', title: 'Next.js'},
+  { icon:'nuxtdotjs', title: 'Nuxt3'},
+  { icon:'nuxtdotjs', title: 'Nuxt2'},
+  { icon:'remix', title: 'Remix'},
+  { icon:'svelte', title: 'Sveltekit'},
+  { icon:'quasar', title: 'Quasar'},
+  { icon:'gnubash', title: 'WebContainer API'},
+]
 </script>
 
 <style scoped>
@@ -152,4 +203,5 @@ button {
     margin: 5px; /* 减小按钮间距 */
   }
 }
+
 </style>
