@@ -78,10 +78,6 @@ const icons = [
   { icon: 'qwiklabs', title: 'Qwik' },
   { icon: 'solid', title: 'Solid' },
   { icon: 'bootstrap', title: 'Bootstrap 5' },
-  { icon: 'statuc', title: 'Statuc' },
-  { icon: 'vanilla', title: 'Vanilla' },
-  { icon: 'effector', title: 'Effector' },
-  { icon: 'ember', title: 'Ember' },
 ];
 </script>
 
