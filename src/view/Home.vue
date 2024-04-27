@@ -14,6 +14,39 @@ const cards = ref([
   { id: 2, icon: 'mdi-account-group', title: '🤝 交流社区', description: '幻云科技的交流社区是一个充满活力的专业社交平台。在这里，您可以与来自世界各地的专业人士和创意人士交流想法，分享经验，共同成长。' },
   { id: 3, icon: 'mdi-console', title: '🌐 技术支持', description: '我们为前端和后端开发者提供了全面的技术支持。无论您使用的是哪种技术，我们都有专业的资源和团队支持您。' },
 ]);
+
+const frontEnd = {
+  icon: 'mdi-palette',
+  title: '前端',
+  description: '前端技术包括HTML、CSS和JavaScript，以及流行的框架如Vue、React和Angular。',
+  languages: [
+  { icon: 'fa-brands:angular', name: 'Angular' },
+    { icon: 'fa-brands:react', name: 'React' },
+    { icon: 'fa-brands:vuejs', name: 'Vue' },
+    { icon: 'fa-brands:preact', name: 'Preact' },
+    { icon: 'fa-brands:lit', name: 'Lit' },
+    { icon: 'fa-brands:svelte', name: 'Svelte' },
+    { icon: 'fa-brands:qwik', name: 'Qwik' },
+    { icon: 'fa-brands:solidjs', name: 'Solid' },
+    { icon: 'fa-brands:bootstrap', name: 'Bootstrap5' },
+    { icon: 'fa-solid:file-code', name: 'Static' },
+    { icon: 'fa-brands:vanilla', name: 'Vanilla' },
+    { icon: 'fa-solid:code', name: 'Effector' },
+    { icon: 'fa-brands:ember', name: 'Ember' },
+  ],
+};
+
+const backEnd = {
+  icon: 'mdi-console',
+  title: '后端',
+  description: '后端技术涉及服务器、数据库和应用程序逻辑，常用的语言包括Node.js、Python、Java和PHP。',
+  languages: [
+    { icon: 'mdi-nodejs', name: 'Node.js' },
+    { icon: 'mdi-language-python', name: 'Python' },
+    { icon: 'mdi-language-java', name: 'Java' },
+    { icon: 'mdi-language-php', name: 'PHP' },
+  ],
+};
 </script>
 
 <template>
@@ -34,32 +67,31 @@ const cards = ref([
     </v-row>
 
     <v-row>
-      <v-col cols="12" sm="4" v-for="(card, index) in cards" :key="card.id">
-        <v-card class="pa-4 text-center card-hover" elevation="5">
-          <v-icon size="64" aria-hidden="true">{{ card.icon }}</v-icon>
-          <h2>{{ card.title }}</h2>
-          <p>
-            {{ card.description }}
-          </p>
-        </v-card>
-      </v-col>
+      <v-col cols="12" sm="6">
+        <v-icon size="64" aria-hidden="true">{{ frontEnd.icon }}</v-icon>
+        <h3>{{ frontEnd.title }}</h3>
+        <p>{{ frontEnd.description }}</p>
+        <div class="language-icons">
+          <i v-for="language in frontEnd.languages" :key="language.name" :class="language.icon" class="fa-2x"></i>
+        </div>
+      </v-col> 
     </v-row>
-
+    
     <v-row>
       <v-col cols="12" sm="6">
-        <h2 class="text-center">前端模板语言</h2>
-        <div class="text-center">
-          <v-icon size="64" class="mr-3">mdi-language-html5</v-icon>
-          <v-icon size="64" class="mr-3">mdi-language-css3</v-icon>
-          <v-icon size="64">mdi-language-javascript</v-icon>
+        <v-icon size="64" aria-hidden="true">{{ frontEnd.icon }}</v-icon>
+        <h3>{{ frontEnd.title }}</h3>
+        <p>{{ frontEnd.description }}</p>
+        <div class="language-icons">
+          <v-icon v-for="language in frontEnd.languages" :key="language.name" size="32" aria-hidden="true">{{ language.icon }}</v-icon>
         </div>
       </v-col>
       <v-col cols="12" sm="6">
-        <h2 class="text-center">后端模板语言</h2>
-        <div class="text-center">
-          <v-icon size="64" class="mr-3">mdi-language-python</v-icon>
-          <v-icon size="64" class="mr-3">mdi-language-php</v-icon>
-          <v-icon size="64">mdi-language-java</v-icon>
+        <v-icon size="64" aria-hidden="true">{{ backEnd.icon }}</v-icon>
+        <h3>{{ backEnd.title }}</h3>
+        <p>{{ backEnd.description }}</p>
+        <div class="language-icons">
+          <v-icon v-for="language in backEnd.languages" :key="language.name" size="32" aria-hidden="true">{{ language.icon }}</v-icon>
         </div>
       </v-col>
     </v-row>
