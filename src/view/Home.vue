@@ -3,9 +3,6 @@
     <v-row justify="center" align="center" style="height: 100vh">
       <v-col cols="12" sm="8" md="6">
         <h1 class="text-center">欢迎来到<span class="text-gradient">幻云科技</span></h1>
-        <svg class="cloud-icon" width="48" height="48" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-        </svg>
         <p class="text-center">
           开启您的创新之旅。在这里，您将发现一个充满无限可能性的空间，旨在激发您的创意火花，提升工作效率。
         </p>
@@ -99,7 +96,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const register = () => {
   console.log('注册新用户');
@@ -149,6 +148,80 @@ const fuicons = [
   { icon:'quasar', title: 'Quasar'},
   { icon:'gnubash', title: 'WebContainer API'},
 ]
+
+gsap.registerPlugin(ScrollTrigger);
+
+onMounted(() => {
+  gsap.from('.card-hover', {
+    scrollTrigger: {
+      trigger: '.card-hover',
+      start: 'top 80%', // 当元素到达视口顶部80%的位置时开始动画
+      toggleActions: 'play none none reverse', // 进入视口时播放动画，离开时反向播放
+    },
+    y: 100, // 元素的初始Y位置
+    opacity: 0, // 初始不透明度
+    duration: 1, // 动画持续时间
+    stagger: 0.2, // 动画之间的延迟
+    ease: 'power3.out', // 动画缓动函数
+  });
+  gsap.from('h1', {
+    scrollTrigger: {
+      trigger: 'h1',
+      start: 'top 80%', // 当元素到达视口顶部80%的位置时开始动画
+      toggleActions: 'play none none reverse', // 进入视口时播放动画，离开时反向播放
+    },
+    x: -100, // 元素的初始X位置，使其位于视图左侧之外
+    opacity: 0, // 初始不透明度
+    duration: 1, // 动画持续时间
+    ease: 'power3.out', // 动画缓动函数
+  });
+  
+  // 前端技术卡片动画
+  gsap.from('.front-end .language-icons img', {
+    scrollTrigger: {
+      trigger: '.front-end',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+      // markers: true, // 用于调试，显示动画触发区域
+    },
+    x: -100,
+    opacity: 0,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: 'power3.out',
+  });
+
+  // 后端技术卡片动画
+  gsap.from('.back-end .language-icons img', {
+    scrollTrigger: {
+      trigger: '.back-end',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+      // markers: true, // 用于调试，显示动画触发区域
+    },
+    x: 100,
+    opacity: 0,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: 'power3.out',
+  });
+
+  // 全栈技术卡片动画
+  gsap.from('.full-stack .language-icons img', {
+    scrollTrigger: {
+      trigger: '.full-stack',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+      // markers: true, // 用于调试，显示动画触发区域
+    },
+    x: -100,
+    opacity: 0,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: 'power3.out',
+  });
+});
+
 </script>
 
 <style scoped>
@@ -241,24 +314,6 @@ button:hover {
   button {
     padding: 8px 16px;
     margin: 5px;
-  }
-}
-.title-with-icon {
-  position: relative;
-  display: inline-block;
-}
-
-.cloud-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: -60px; /* 根据需要调整位置 */
-}
-
-/* 针对超小屏幕的图标位置调整 */
-@media (max-width: 400px) {
-  .cloud-icon {
-    right: -40px; /* 调整在小屏幕上的位置 */
   }
 }
 </style>
