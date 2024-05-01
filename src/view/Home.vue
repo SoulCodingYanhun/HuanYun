@@ -3,6 +3,9 @@
     <v-row justify="center" align="center" style="height: 100vh">
       <v-col cols="12" sm="8" md="6">
         <h1 class="text-center">欢迎来到<span class="text-gradient">幻云科技</span></h1>
+        <svg class="cloud-icon" width="48" height="48" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+        </svg>
         <p class="text-center">
           开启您的创新之旅。在这里，您将发现一个充满无限可能性的空间，旨在激发您的创意火花，提升工作效率。
         </p>
@@ -11,11 +14,11 @@
 
     <v-row>
       <v-col cols="12">
-        <h2 class="text-center">特色</h2>
+        <h1 class="text-center">特色</h1>
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row style="height: 70vh">
       <v-col v-for="card in cards" :key="card.id" cols="12" sm="4">
         <v-card class="card-hover" elevation="4">
           <v-card-title>
@@ -34,7 +37,7 @@
 
    <!-- 前端技术卡片 -->
    <v-col cols="12" sm="140">
-        <v-card class="card-hover" elevation="4">
+        <v-card class="card-hover" elevation="4" height="40%">
           <p class="text-center">前端</p>
           <div class="language-icons">
             <v-tooltip v-for="icon in ficons" :key="icon.title" bottom>
@@ -49,7 +52,7 @@
 
       <!-- 后端技术卡片 -->
       <v-col cols="12" sm="140">
-        <v-card class="card-hover" elevation="4">
+        <v-card class="card-hover" elevation="4" height="40%">
           <p class="text-center">后端</p>
           <div class="language-icons">
             <v-tooltip v-for="icon in bicons" :key="icon.title" bottom>
@@ -64,7 +67,7 @@
 
       <!-- 全栈技术卡片 -->
       <v-col cols="12" sm="140">
-        <v-card class="card-hover" elevation="4">
+        <v-card class="card-hover" elevation="4" height="40%">
           <p class="text-center">全栈</p>
           <div class="language-icons">
             <v-tooltip v-for="icon in fuicons" :key="icon.title" bottom>
@@ -77,7 +80,7 @@
         </v-card>
       </v-col>
 
-
+      <div style="height: 50vh"></div>
 
 
     <v-row justify="center" class="mt-5">
@@ -154,33 +157,50 @@ const fuicons = [
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+  font-family: 'Arial', sans-serif;
 }
 
 .text-gradient {
-  background: linear-gradient(to right, rgb(119, 106, 230), rgb(0, 213, 255));
+  background: linear-gradient(to right, rgb(235 125 247), rgb(0, 213, 255));
   -webkit-background-clip: text;
   color: transparent;
   /* font-size: 2em; */
 }
 
 h1 {
-  font-weight: normal;
+  font-weight: bold;
+  color: #333;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
+p {
+  color: #666;
+  font-size: 1rem;
+}
+
 .card-hover {
   transition: transform 0.3s ease-in-out;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 16px;
 }
 
 .card-hover:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 button {
+  border-radius: 4px;
+  transition: background-color 0.3s;
   margin: 10px;
   padding: 10px 20px;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #e0e0e0;
 }
 
 .v-icon {
@@ -198,33 +218,47 @@ button {
   margin: 10px;
   width: 24px;
   height: 24px;
+  border-radius: 50%;
 }
 
-/* 优化小屏幕上的卡片间距 */
+/* 媒体查询，针对小屏幕优化 */
 @media (max-width: 600px) {
   .v-card {
-    margin-bottom: 1rem;
+    padding: 12px;
   }
 }
 
 /* 针对超小屏幕的额外样式调整 */
 @media (max-width: 400px) {
-  .v-card {
-    padding: 8px; /* 减少内边距以适应小屏幕 */
-  }
-
   h2 {
-    font-size: 1.5rem; /* 减小标题字体大小 */
+    font-size: 1.2rem;
   }
 
   p {
-    font-size: 0.875rem; /* 减小描述字体大小 */
+    font-size: 0.9rem;
   }
 
   button {
-    padding: 8px 16px; /* 减小按钮尺寸 */
-    margin: 5px; /* 减小按钮间距 */
+    padding: 8px 16px;
+    margin: 5px;
   }
 }
+.title-with-icon {
+  position: relative;
+  display: inline-block;
+}
 
+.cloud-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -60px; /* 根据需要调整位置 */
+}
+
+/* 针对超小屏幕的图标位置调整 */
+@media (max-width: 400px) {
+  .cloud-icon {
+    right: -40px; /* 调整在小屏幕上的位置 */
+  }
+}
 </style>
