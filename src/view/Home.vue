@@ -1,8 +1,8 @@
 <template>
   <v-container class="home" fluid>
-    <v-row justify="center" align="center" style="height: 80vh">
+    <v-row justify="center" align="center" style="height: 100vh">
       <v-col cols="12" sm="8" md="6">
-        <h1 class="text-center">欢迎来到幻云科技</h1>
+        <h1 class="text-center">欢迎来到<span class="text-gradient">幻云科技</span></h1>
         <p class="text-center">
           开启您的创新之旅。在这里，您将发现一个充满无限可能性的空间，旨在激发您的创意火花，提升工作效率。
         </p>
@@ -32,7 +32,8 @@
       </v-col>
     </v-row>
 
-  <v-col cols="12" sm="4">
+   <!-- 前端技术卡片 -->
+   <v-col cols="12" sm="140">
         <v-card class="card-hover" elevation="4">
           <p class="text-center">前端</p>
           <div class="language-icons">
@@ -46,9 +47,10 @@
         </v-card>
       </v-col>
 
-  <v-col cols="12" sm="4">
+      <!-- 后端技术卡片 -->
+      <v-col cols="12" sm="140">
         <v-card class="card-hover" elevation="4">
-          <p class="text-center">前端</p>
+          <p class="text-center">后端</p>
           <div class="language-icons">
             <v-tooltip v-for="icon in bicons" :key="icon.title" bottom>
               <template v-slot:activator="{ on, attrs }">
@@ -60,9 +62,10 @@
         </v-card>
       </v-col>
 
-  <v-col cols="12" sm="4">
+      <!-- 全栈技术卡片 -->
+      <v-col cols="12" sm="140">
         <v-card class="card-hover" elevation="4">
-          <p class="text-center">前端</p>
+          <p class="text-center">全栈</p>
           <div class="language-icons">
             <v-tooltip v-for="icon in fuicons" :key="icon.title" bottom>
               <template v-slot:activator="{ on, attrs }">
@@ -151,6 +154,13 @@ const fuicons = [
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, rgb(119, 106, 230), rgb(0, 213, 255));
+  -webkit-background-clip: text;
+  color: transparent;
+  /* font-size: 2em; */
 }
 
 h1 {
