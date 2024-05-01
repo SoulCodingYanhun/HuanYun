@@ -32,34 +32,47 @@
       </v-col>
     </v-row>
 
-    <!-- <v-row> -->
-  <v-col cols="12" sm="140">
-    <v-card class="card-hover" elevation="4" weight="100%">
-      <p class="text-center">前端</p>
-      <div class="language-icons">
-        <img v-for="icon in ficons" :key="icon.title" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.13.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
-      </div>
-    </v-card>
-  </v-col>
+  <v-col cols="12" sm="4">
+        <v-card class="card-hover" elevation="4">
+          <p class="text-center">前端</p>
+          <div class="language-icons">
+            <v-tooltip v-for="icon in ficons" :key="icon.title" bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <img v-bind="attrs" v-on="on" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
+              </template>
+              <span>{{ icon.title }}</span>
+            </v-tooltip>
+          </div>
+        </v-card>
+      </v-col>
 
-  <v-col cols="12" sm="140">
-    <v-card class="card-hover" elevation="4" weight="100%">
-      <p class="text-center">后端</p>
-      <div class="language-icons">
-        <img v-for="icon in bicons" :key="icon.title" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.13.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
-      </div>
-    </v-card>
-  </v-col>
+  <v-col cols="12" sm="4">
+        <v-card class="card-hover" elevation="4">
+          <p class="text-center">前端</p>
+          <div class="language-icons">
+            <v-tooltip v-for="icon in bicons" :key="icon.title" bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <img v-bind="attrs" v-on="on" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
+              </template>
+              <span>{{ icon.title }}</span>
+            </v-tooltip>
+          </div>
+        </v-card>
+      </v-col>
 
-  <v-col cols="12" sm="140">
-    <v-card class="card-hover" elevation="4" weight="100%">
-      <p class="text-center">全栈</p>
-      <div class="language-icons">
-        <img v-for="icon in fuicons" :key="icon.title" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.13.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
-      </div>
-    </v-card>
-  </v-col>
-<!-- </v-row> -->
+  <v-col cols="12" sm="4">
+        <v-card class="card-hover" elevation="4">
+          <p class="text-center">前端</p>
+          <div class="language-icons">
+            <v-tooltip v-for="icon in fuicons" :key="icon.title" bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <img v-bind="attrs" v-on="on" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
+              </template>
+              <span>{{ icon.title }}</span>
+            </v-tooltip>
+          </div>
+        </v-card>
+      </v-col>
 
 
 
