@@ -30,6 +30,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
+// cdn
+import * as icons from 'simple-icons';
+
 // 将 Font Awesome 图标添加到库中
 library.add(fas, fab);
 
@@ -47,6 +50,8 @@ app.use(Router);
 
 // 注册 Font Awesome 图标组件
 app.component('font-awesome-icon', FontAwesomeIcon);
+
+app.use(icons)
 
 // 挂载应用到 #app 元素
 app.mount('#app');

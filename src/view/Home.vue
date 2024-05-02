@@ -39,8 +39,7 @@
           <div class="language-icons">
             <v-tooltip v-for="icon in ficons" :key="icon.title" bottom>
               <template v-slot:activator="{ on, attrs }">
-                <img v-bind="attrs" v-on="on" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
-              </template>
+                <img v-bind="attrs" v-on="on" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">           </template>
               <span>{{ icon.title }}</span>
             </v-tooltip>
           </div>
@@ -96,6 +95,7 @@
 </template>
 
 <script setup>
+import { ApacheMavenIcon, NpmIcon } from 'vue3-simple-icons'
 import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
