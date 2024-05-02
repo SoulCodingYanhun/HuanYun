@@ -110,37 +110,7 @@
 </template>
 
 <script setup>
-import {
-  AngularIcon, 
-  ReactIcon, 
-  VueDotjsIcon, 
-  PreactIcon, 
-  LitIcon, 
-  SvelteIcon, 
-  QwikIcon, 
-  SolidIcon, 
-  BootstrapIcon, 
-  JavaScriptIcon,
-  Typescript,
-  Html5Icon,
-  EmberDotjsIcon,
-  PythonIcon,
-  PhpIcon,
-  RubyIcon,
-  NodeDotjsIcon,
-  GoIcon,
-  RustIcon,
-  KotlinIcon,
-  PerlIcon,
-  DartIcon,
-  ScalaIcon,
-  AstroIcon,
-  NextDotjsIcon,
-  NuxtDotjsIcon,
-  RemixIcon,
-  QuasarIcon,
-  GnuBashIcon,
-  } from 'vue3-simple-icons'
+import { AngularIcon, ReactIcon, VueDotjsIcon, PreactIcon, LitIcon, SvelteIcon, QwikIcon, SolidIcon, BootstrapIcon, JavaScriptIcon, Typescript, Html5Icon, EmberDotjsIcon, PythonIcon, PhpIcon, RubyIcon, NodeDotjsIcon, GoIcon, RustIcon, KotlinIcon, PerlIcon, DartIcon, ScalaIcon, AstroIcon, NextDotjsIcon, NuxtDotjsIcon, RemixIcon, QuasarIcon, GnuBashIcon } from 'vue3-simple-icons'
 import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
