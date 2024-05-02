@@ -78,7 +78,15 @@
       <v-card class="card-hover" elevation="4">
         <p class="text-center">全栈</p>
         <div class="language-icons">
-
+          <AstroIcon :size="24" color="black" />
+          <AstroIcon :size="24" color="black" />
+          <NextDotjsIcon :size="24" color="black" />
+          <NuxtDotjsIcon :size="24" color="black" />
+          <NuxtDotjsIcon :size="24" color="black" />
+          <RemixIcon :size="24" color="black" />
+          <SvelteIcon :size="24" color="black" />
+          <QuasarIcon :size="24" color="black" />
+          <GnuBashIcon :size="24" color="black" />
         </div>
       </v-card>
     </v-col>
@@ -126,7 +134,12 @@ import {
   PerlIcon,
   DartIcon,
   ScalaIcon,
-
+  AstroIcon,
+  NextDotjsIcon,
+  NuxtDotjsIcon,
+  RemixIcon,
+  QuasarIcon,
+  GnuBashIcon,
   } from 'vue3-simple-icons'
 import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';
@@ -145,25 +158,6 @@ const cards = ref([
   { id: 2, icon: '', title: '🤝 交流社区', description: '幻云科技的交流社区是一个充满活力的专业社交平台。在这里，您可以与来自世界各地的专业人士和创意人士交流想法，分享经验，共同成长。' },
   { id: 3, icon: '', title: '🌐 技术支持', description: '我们为前端和后端开发者提供了全面的技术支持。无论您使用的是哪种技术，我们都有专业的资源和团队支持您。' },
 ]);
-
-const bicons = [
-  { icon: 'nestjs', title: 'Nestjs' },
-  { icon: 'express', title: 'Express' },
-  { icon: 'koa', title: 'Koa' },
-  { icon: 'graphql', title: 'Graphql' },
-];
-
-const fuicons = [
-  { icon:'astro', title: 'Astro Basics'},
-  { icon:'astro', title: 'Astro Minimal'},
-  { icon:'nextdotjs', title: 'Next.js'},
-  { icon:'nuxtdotjs', title: 'Nuxt3'},
-  { icon:'nuxtdotjs', title: 'Nuxt2'},
-  { icon:'remix', title: 'Remix'},
-  { icon:'svelte', title: 'Sveltekit'},
-  { icon:'quasar', title: 'Quasar'},
-  { icon:'gnubash', title: 'WebContainer API'},
-]
 
 gsap.registerPlugin(ScrollTrigger);
 
