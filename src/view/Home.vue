@@ -33,48 +33,55 @@
     </v-row>
 
    <!-- 前端技术卡片 -->
-   <v-col cols="12" sm="140">
-        <v-card class="card-hover" elevation="4" height="40%">
-          <p class="text-center">前端</p>
-          <div class="language-icons">
-            <v-tooltip v-for="icon in ficons" :key="icon.title" bottom>
-              <template v-slot:activator="{ on, attrs }">
-                <img v-bind="attrs" v-on="on" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">           </template>
-              <span>{{ icon.title }}</span>
-            </v-tooltip>
-          </div>
-        </v-card>
-      </v-col>
+   <v-col cols="12" sm="6">
+      <v-card class="card-hover" elevation="4">
+        <p class="text-center">前端</p>
+        <div class="language-icons">
+          <AngularIcon :size="24" color="black" />
+          <VueDotjsIcon :size="24" color="black" />
+          <ReactIcon :size="24" color="black" />
+          <LitIcon :size="24" color="black" />
+          <SvelteIcon :size="24" color="black" />
+          <PreactIcon :size="24" color="black" />
+          <QwikIcon :size="24" color="black" />
+          <SolidIcon :size="24" color="black" />
+          <BootstrapIcon :size="24" color="black" />
+          <JavaScriptIcon :size="24" color="black" />
+          <Typescript :size="24" color="black" />
+          <Html5Icon :size="24" color="black" />
+          <EmberDotjsIcon :size="24" color="black" />
+        </div>
+      </v-card>
+    </v-col>
 
-      <!-- 后端技术卡片 -->
-      <v-col cols="12" sm="140">
-        <v-card class="card-hover" elevation="4" height="40%">
-          <p class="text-center">后端</p>
-          <div class="language-icons">
-            <v-tooltip v-for="icon in bicons" :key="icon.title" bottom>
-              <template v-slot:activator="{ on, attrs }">
-                <img v-bind="attrs" v-on="on" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
-              </template>
-              <span>{{ icon.title }}</span>
-            </v-tooltip>
-          </div>
-        </v-card>
-      </v-col>
+    <!-- 后端技术卡片 -->
+    <v-col cols="12" sm="6">
+      <v-card class="card-hover" elevation="4">
+        <p class="text-center">后端</p>
+        <div class="language-icons">
+          <PythonIcon :size="24" color="black" />
+          <PhpIcon :size="24" color="black" />
+          <RubyIcon :size="24" color="black" />
+          <NodeDotjsIcon :size="24" color="black" />
+          <GoIcon :size="24" color="black" />
+          <KotlinIcon :size="24" color="black" />
+          <PerlIcon :size="24" color="black" />
+          <DartIcon :size="24" color="black" />
+          <ScalaIcon :size="24" color="black" />
+          <RustIcon :size="24" color="black" />
+        </div>
+      </v-card>
+    </v-col>
 
-      <!-- 全栈技术卡片 -->
-      <v-col cols="12" sm="140">
-        <v-card class="card-hover" elevation="4" height="40%">
-          <p class="text-center">全栈</p>
-          <div class="language-icons">
-            <v-tooltip v-for="icon in fuicons" :key="icon.title" bottom>
-              <template v-slot:activator="{ on, attrs }">
-                <img v-bind="attrs" v-on="on" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" alt="icon" width="24" height="24" class="mr-2">
-              </template>
-              <span>{{ icon.title }}</span>
-            </v-tooltip>
-          </div>
-        </v-card>
-      </v-col>
+    <!-- 全栈技术卡片 -->
+    <v-col cols="12" sm="6">
+      <v-card class="card-hover" elevation="4">
+        <p class="text-center">全栈</p>
+        <div class="language-icons">
+
+        </div>
+      </v-card>
+    </v-col>
 
       <div style="height: 50vh"></div>
 
@@ -95,7 +102,32 @@
 </template>
 
 <script setup>
-import { ApacheMavenIcon, NpmIcon } from 'vue3-simple-icons'
+import {
+  AngularIcon, 
+  ReactIcon, 
+  VueDotjsIcon, 
+  PreactIcon, 
+  LitIcon, 
+  SvelteIcon, 
+  QwikIcon, 
+  SolidIcon, 
+  BootstrapIcon, 
+  JavaScriptIcon,
+  Typescript,
+  Html5Icon,
+  EmberDotjsIcon,
+  PythonIcon,
+  PhpIcon,
+  RubyIcon,
+  NodeDotjsIcon,
+  GoIcon,
+  RustIcon,
+  KotlinIcon,
+  PerlIcon,
+  DartIcon,
+  ScalaIcon,
+
+  } from 'vue3-simple-icons'
 import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -113,22 +145,6 @@ const cards = ref([
   { id: 2, icon: '', title: '🤝 交流社区', description: '幻云科技的交流社区是一个充满活力的专业社交平台。在这里，您可以与来自世界各地的专业人士和创意人士交流想法，分享经验，共同成长。' },
   { id: 3, icon: '', title: '🌐 技术支持', description: '我们为前端和后端开发者提供了全面的技术支持。无论您使用的是哪种技术，我们都有专业的资源和团队支持您。' },
 ]);
-
-const ficons = [
-  { icon: 'angular', title: 'Angular' },
-  { icon: 'react', title: 'React' },
-  { icon: 'vuedotjs', title: 'Vue' },
-  { icon: 'preact', title: 'Preact' },
-  { icon: 'lit', title: 'Lit' },
-  { icon: 'svelte', title: 'Svelte' },
-  { icon: 'qwik', title: 'Qwik' },
-  { icon: 'solid', title: 'Solid' },
-  { icon: 'bootstrap', title: 'Bootstrap 5' },
-  { icon: 'javascript', title: 'Javascript' },
-  { icon: 'typescript', title: 'Typescript' },
-  { icon: 'html5', title: 'Static' },
-  { icon: 'emberdotjs', title: 'Ember' },
-];
 
 const bicons = [
   { icon: 'nestjs', title: 'Nestjs' },
