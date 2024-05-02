@@ -32,37 +32,67 @@
       </v-col>
     </v-row>
 
-    <!-- 前端技术卡片 -->
-    <v-col cols="12" sm="6">
-      <v-card class="card-hover front-end" elevation="4">
+   <!-- 前端技术卡片 -->
+   <v-col cols="12" sm="6">
+      <v-card class="card-hover" elevation="4">
         <p class="text-center">前端</p>
         <div class="language-icons">
-          <component v-for="icon in frontEndIcons" :key="icon" :is="icon" :size="24" color="black" />
+          <AngularIcon :size="24" color="black" />
+          <VueDotjsIcon :size="24" color="black" />
+          <ReactIcon :size="24" color="black" />
+          <LitIcon :size="24" color="black" />
+          <SvelteIcon :size="24" color="black" />
+          <PreactIcon :size="24" color="black" />
+          <QwikIcon :size="24" color="black" />
+          <SolidIcon :size="24" color="black" />
+          <BootstrapIcon :size="24" color="black" />
+          <JavaScriptIcon :size="24" color="black" />
+          <Typescript :size="24" color="black" />
+          <Html5Icon :size="24" color="black" />
+          <EmberDotjsIcon :size="24" color="black" />
         </div>
       </v-card>
     </v-col>
 
     <!-- 后端技术卡片 -->
     <v-col cols="12" sm="6">
-      <v-card class="card-hover back-end" elevation="4">
+      <v-card class="card-hover" elevation="4">
         <p class="text-center">后端</p>
         <div class="language-icons">
-          <component v-for="icon in backEndIcons" :key="icon" :is="icon" :size="24" color="black" />
+          <PythonIcon :size="24" color="black" />
+          <PhpIcon :size="24" color="black" />
+          <RubyIcon :size="24" color="black" />
+          <NodeDotjsIcon :size="24" color="black" />
+          <GoIcon :size="24" color="black" />
+          <KotlinIcon :size="24" color="black" />
+          <PerlIcon :size="24" color="black" />
+          <DartIcon :size="24" color="black" />
+          <ScalaIcon :size="24" color="black" />
+          <RustIcon :size="24" color="black" />
         </div>
       </v-card>
     </v-col>
 
     <!-- 全栈技术卡片 -->
     <v-col cols="12" sm="6">
-      <v-card class="card-hover full-stack" elevation="4">
+      <v-card class="card-hover" elevation="4">
         <p class="text-center">全栈</p>
         <div class="language-icons">
-          <component v-for="icon in fullStackIcons" :key="icon" :is="icon" :size="24" color="black" />
+          <AstroIcon :size="24" color="black" />
+          <AstroIcon :size="24" color="black" />
+          <NextDotjsIcon :size="24" color="black" />
+          <NuxtDotjsIcon :size="24" color="black" />
+          <NuxtDotjsIcon :size="24" color="black" />
+          <RemixIcon :size="24" color="black" />
+          <SvelteIcon :size="24" color="black" />
+          <QuasarIcon :size="24" color="black" />
+          <GnuBashIcon :size="24" color="black" />
         </div>
       </v-card>
     </v-col>
 
-    <div style="height: 50vh"></div>
+      <div style="height: 50vh"></div>
+
 
     <v-row justify="center" class="mt-5">
       <v-col cols="12" sm="6" md="4">
