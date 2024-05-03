@@ -23,4 +23,7 @@ export default defineConfig({
       dts: true,
     }),
   ],
+  optimizeDeps: {
+    include: ['gsap', 'gsap/MorphSVGPlugin', 'gsap/ScrollTrigger', 'gsap/MotionPathPlugin', 'gsap/PixiPlugin', 'gsap/SplitText'],
+  },
 });

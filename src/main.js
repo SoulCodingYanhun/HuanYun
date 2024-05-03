@@ -48,6 +48,5 @@ app.use(Router);
 // 注册 Font Awesome 图标组件
 app.component('font-awesome-icon', FontAwesomeIcon);
 
-
 // 挂载应用到 #app 元素
 app.mount('#app');

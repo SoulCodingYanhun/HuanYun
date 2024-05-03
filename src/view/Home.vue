@@ -1,119 +1,132 @@
 <template>
   <v-container class="home" fluid>
-    <v-row justify="center" align="center" style="height: 100vh">
-      <v-col cols="12" sm="8" md="6">
-        <h1 class="text-center">欢迎来到<span class="text-gradient">幻云科技</span></h1>
-        <p class="text-center">
-          开启您的创新之旅。在这里，您将发现一个充满无限可能性的空间，旨在激发您的创意火花，提升工作效率。
-        </p>
-      </v-col>
-    </v-row>
+    <div class="page-enter-animation">
+      <v-row justify="center" align="center" style="height: 100vh">
+        <v-col cols="12" sm="8" md="6">
+          <h1 class="text-center">欢迎来到<span class="text-gradient">幻云科技</span></h1>
+          <p class="text-center">
+            开启您的创新之旅。在这里，您将发现一个充满无限可能性的空间，旨在激发您的创意火花，提升工作效率。
+          </p>
+        </v-col>
+      </v-row>
+    </div>
 
     <v-row>
       <v-col cols="12">
-        <h1 class="text-center">特色</h1>
+        <h1 class="text-center section-title-animation">特色</h1>
       </v-col>
     </v-row>
 
-    <v-row style="height: 70vh">
-      <v-col v-for="card in cards" :key="card.id" cols="12" sm="4">
-        <v-card class="card-hover" elevation="4">
-          <v-card-title>
-            <v-icon size="24" class="mr-2">{{ card.icon }}</v-icon>
-            {{ card.title }}
-          </v-card-title>
-          <v-card-text>{{ card.description }}</v-card-text>
+    <div class="card-animation">
+      <v-row style="height: 70vh">
+        <v-col v-for="card in cards" :key="card.id" cols="12" sm="4">
+          <v-card class="card-hover" elevation="4">
+            <v-card-title>
+              <v-icon size="24" class="mr-2">{{ card.icon }}</v-icon>
+              {{ card.title }}
+            </v-card-title>
+            <v-card-text>{{ card.description }}</v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
+
+    <v-row>
+      <v-col cols="12">
+        <h2 class="text-center section-title-animation">我们的模板支持语言</h2>
+      </v-col>
+    </v-row>
+
+    <div class="language-icons-animation">
+      <!-- 前端技术卡片 -->
+      <v-col cols="12" sm="140">
+        <v-card class="card-hover front-end" elevation="4">
+          <p class="text-center">前端</p>
+          <div class="language-icons">
+            <img v-for="icon in FrontendIcons" :key="icon.icon" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" :alt="icon.title" />
+          </div>
         </v-card>
       </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12">
-        <h2 class="text-center">我们的模板支持语言</h2>
+
+      <!-- 后端技术卡片 -->
+      <v-col cols="12" sm="140">
+        <v-card class="card-hover back-end" elevation="4">
+          <p class="text-center">后端</p>
+          <div class="language-icons">
+            <img v-for="icon in BackendIcons" :key="icon.icon" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" :alt="icon.title" />
+          </div>
+        </v-card>
       </v-col>
-    </v-row>
 
-   <!-- 前端技术卡片 -->
-   <v-col cols="12" sm="6">
-      <v-card class="card-hover" elevation="4">
-        <p class="text-center">前端</p>
-        <div class="language-icons">
-          <AngularIcon :size="24" color="black" />
-          <VueDotjsIcon :size="24" color="black" />
-          <ReactIcon :size="24" color="black" />
-          <LitIcon :size="24" color="black" />
-          <SvelteIcon :size="24" color="black" />
-          <PreactIcon :size="24" color="black" />
-          <QwikIcon :size="24" color="black" />
-          <SolidIcon :size="24" color="black" />
-          <BootstrapIcon :size="24" color="black" />
-          <JavaScriptIcon :size="24" color="black" />
-          <Typescript :size="24" color="black" />
-          <Html5Icon :size="24" color="black" />
-          <EmberDotjsIcon :size="24" color="black" />
-        </div>
-      </v-card>
-    </v-col>
-
-    <!-- 后端技术卡片 -->
-    <v-col cols="12" sm="6">
-      <v-card class="card-hover" elevation="4">
-        <p class="text-center">后端</p>
-        <div class="language-icons">
-          <PythonIcon :size="24" color="black" />
-          <PhpIcon :size="24" color="black" />
-          <RubyIcon :size="24" color="black" />
-          <NodeDotjsIcon :size="24" color="black" />
-          <GoIcon :size="24" color="black" />
-          <KotlinIcon :size="24" color="black" />
-          <PerlIcon :size="24" color="black" />
-          <DartIcon :size="24" color="black" />
-          <ScalaIcon :size="24" color="black" />
-          <RustIcon :size="24" color="black" />
-        </div>
-      </v-card>
-    </v-col>
-
-    <!-- 全栈技术卡片 -->
-    <v-col cols="12" sm="6">
-      <v-card class="card-hover" elevation="4">
-        <p class="text-center">全栈</p>
-        <div class="language-icons">
-          <AstroIcon :size="24" color="black" />
-          <AstroIcon :size="24" color="black" />
-          <NextDotjsIcon :size="24" color="black" />
-          <NuxtDotjsIcon :size="24" color="black" />
-          <NuxtDotjsIcon :size="24" color="black" />
-          <RemixIcon :size="24" color="black" />
-          <SvelteIcon :size="24" color="black" />
-          <QuasarIcon :size="24" color="black" />
-          <GnuBashIcon :size="24" color="black" />
-        </div>
-      </v-card>
-    </v-col>
-
-      <div style="height: 50vh"></div>
-
-
-    <v-row justify="center" class="mt-5">
-      <v-col cols="12" sm="6" md="4">
-        <h2 class="text-center">🌟 加入我们</h2>
-        <p class="text-center">
-          幻云科技期待您的加入。让我们一起探索科技的边界，共同创造一个更加美好的未来。
-        </p>
-        <div class="text-center">
-          <el-button type="primary" @click="register" class="mr-3">立即注册</el-button>
-          <el-button @click="learnMore" type="button">了解更多</el-button>
-        </div>
+      <!-- 全栈技术卡片 -->
+      <v-col cols="12" sm="140">
+        <v-card class="card-hover full-stack" elevation="4">
+          <p class="text-center">全栈</p>
+          <div class="language-icons">
+            <img v-for="icon in FullstackIcons" :key="icon.icon" :src="`https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/${icon.icon}.svg`" :alt="icon.title" />
+          </div>
+        </v-card>
       </v-col>
-    </v-row>
+    </div>
+
+    <div style="height: 50vh"></div>
+
+    <div class="button-animation">
+      <v-row justify="center" class="mt-5">
+        <v-col cols="12" sm="6" md="4">
+          <h2 class="text-center">🌟 加入我们</h2>
+          <p class="text-center">
+            幻云科技期待您的加入。让我们一起探索科技的边界，共同创造一个更加美好的未来。
+          </p>
+          <div class="text-center">
+            <el-button type="primary" @click="register" class="mr-3">立即注册</el-button>
+            <el-button @click="learnMore" type="button">了解更多</el-button>
+          </div>
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
 </template>
 
 <script setup>
-import { AngularIcon, ReactIcon, VueDotjsIcon, PreactIcon, LitIcon, SvelteIcon, QwikIcon, SolidIcon, BootstrapIcon, JavaScriptIcon, Typescript, Html5Icon, EmberDotjsIcon, PythonIcon, PhpIcon, RubyIcon, NodeDotjsIcon, GoIcon, RustIcon, KotlinIcon, PerlIcon, DartIcon, ScalaIcon, AstroIcon, NextDotjsIcon, NuxtDotjsIcon, RemixIcon, QuasarIcon, GnuBashIcon } from 'vue3-simple-icons'
 import { ref, onMounted } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const FrontendIcons = [
+  { icon: 'angular', title: 'Angular' },
+  { icon: 'react', title: 'React' },
+  { icon: 'vuedotjs', title: 'Vue' },
+  { icon: 'preact', title: 'Preact' },
+  { icon: 'lit', title: 'Lit' },
+  { icon: 'svelte', title: 'Svelte' },
+  { icon: 'qwik', title: 'Qwik' },
+  { icon: 'solid', title: 'Solid' },
+  { icon: 'bootstrap', title: 'Bootstrap 5' },
+  { icon: 'javascript', title: 'Javascript' },
+  { icon: 'typescript', title: 'Typescript' },
+  { icon: 'html5', title: 'Static' },
+  { icon: 'emberdotjs', title: 'Ember' },
+];
+
+const BackendIcons = [
+  { icon: 'nestjs', title: 'Nestjs' },
+  { icon: 'express', title: 'Express' },
+  { icon: 'koa', title: 'Koa' },
+  { icon: 'graphql', title: 'Graphql' },
+];
+
+const FullstackIcons = [
+  { icon:'astro', title: 'Astro Basics'},
+  { icon:'astro', title: 'Astro Minimal'},
+  { icon:'nextdotjs', title: 'Next.js'},
+  { icon:'nuxtdotjs', title: 'Nuxt3'},
+  { icon:'nuxtdotjs', title: 'Nuxt2'},
+  { icon:'remix', title: 'Remix'},
+  { icon:'svelte', title: 'Sveltekit'},
+  { icon:'quasar', title: 'Quasar'},
+  { icon:'gnubash', title: 'WebContainer API'},
+]
 
 const register = () => {
   console.log('注册新用户');
@@ -132,73 +145,117 @@ const cards = ref([
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
-  gsap.from('.card-hover', {
-    scrollTrigger: {
-      trigger: '.card-hover',
-      start: 'top 80%', // 当元素到达视口顶部80%的位置时开始动画
-      toggleActions: 'play none none reverse', // 进入视口时播放动画，离开时反向播放
-    },
-    y: 100, // 元素的初始Y位置
-    opacity: 0, // 初始不透明度
-    duration: 1, // 动画持续时间
-    stagger: 0.2, // 动画之间的延迟
-    ease: 'power3.out', // 动画缓动函数
+  // Page enter animation
+  gsap.from('.page-enter-animation', {
+    y: '100%',
+    duration: 1,
+    ease: 'power3.out',
   });
-  gsap.from('h1', {
+
+  // Title and paragraph animations
+  gsap.from('.title-animation', {
+    x: -100,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
     scrollTrigger: {
-      trigger: 'h1',
-      start: 'top 80%', // 当元素到达视口顶部80%的位置时开始动画
-      toggleActions: 'play none none reverse', // 进入视口时播放动画，离开时反向播放
-    },
-    x: -100, // 元素的初始X位置，使其位于视图左侧之外
-    opacity: 0, // 初始不透明度
-    duration: 1, // 动画持续时间
-    ease: 'power3.out', // 动画缓动函数
-  });
-  
-  // 前端技术卡片动画
-  gsap.from('.front-end .language-icons img', {
-    scrollTrigger: {
-      trigger: '.front-end',
+      trigger: '.title-animation',
       start: 'top 80%',
       toggleActions: 'play none none reverse',
-      // markers: true, // 用于调试，显示动画触发区域
     },
+  });
+
+  gsap.from('.paragraph-animation', {
+    x: 100,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.paragraph-animation',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    },
+  });
+
+  // Section title animations
+  gsap.from('.section-title-animation', {
+    y: -50,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.section-title-animation',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    },
+  });
+
+  // Card animations
+  gsap.from('.card-animation .card-hover', {
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: '.card-animation',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    },
+  });
+
+  // Language icons animations
+  gsap.from('.language-icons-animation .front-end .language-icons img', {
     x: -100,
     opacity: 0,
     duration: 0.5,
     stagger: 0.1,
     ease: 'power3.out',
-  });
-
-  // 后端技术卡片动画
-  gsap.from('.back-end .language-icons img', {
     scrollTrigger: {
-      trigger: '.back-end',
+      trigger: '.front-end',
       start: 'top 80%',
       toggleActions: 'play none none reverse',
-      // markers: true, // 用于调试，显示动画触发区域
     },
+  });
+
+  gsap.from('.language-icons-animation .back-end .language-icons img', {
     x: 100,
     opacity: 0,
     duration: 0.5,
     stagger: 0.1,
     ease: 'power3.out',
-  });
-
-  // 全栈技术卡片动画
-  gsap.from('.full-stack .language-icons img', {
     scrollTrigger: {
-      trigger: '.full-stack',
+      trigger: '.back-end',
       start: 'top 80%',
       toggleActions: 'play none none reverse',
-      // markers: true, // 用于调试，显示动画触发区域
     },
+  });
+
+  gsap.from('.language-icons-animation .full-stack .language-icons img', {
     x: -100,
     opacity: 0,
     duration: 0.5,
     stagger: 0.1,
     ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.full-stack',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    },
+  });
+
+  // Button animations
+  gsap.from('.button-animation .el-button', {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.button-animation',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    },
   });
 });
 
@@ -271,7 +328,6 @@ button:hover {
   margin: 10px;
   width: 24px;
   height: 24px;
-  border-radius: 50%;
 }
 
 /* 媒体查询，针对小屏幕优化 */
