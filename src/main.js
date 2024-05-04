@@ -24,14 +24,8 @@ import ElementPlus from 'element-plus';
 // 引入 Router
 import Router from './router';
 
-// 引入 Font Awesome 图标库
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
-// 将 Font Awesome 图标添加到库中
-library.add(fas, fab);
+// 引入 Vue-Clerk
+import { clerkPlugin } from 'vue-clerk/plugin'
 
 // 创建 Vue 应用实例
 const app = createApp(App);
@@ -45,8 +39,10 @@ app.use(ElementPlus);
 // 使用 Router 插件
 app.use(Router);
 
-// 注册 Font Awesome 图标组件
-app.component('font-awesome-icon', FontAwesomeIcon);
+// 使用 Vue-Clerk 插件
+app.use(clerkPlugin, {
+  publishableKey: import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+})
 
 // 挂载应用到 #app 元素
 app.mount('#app');

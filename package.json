@@ -16,6 +16,7 @@
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
     "vue": "^3.4.24",
+    "vue-clerk": "^0.2.2",
     "vue-router": "^4.3.2",
     "vue-scrollto": "^2.20.0",
     "vue3-simple-icons": "^11.13.0",
