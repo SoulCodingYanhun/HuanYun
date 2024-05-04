@@ -71,6 +71,27 @@
 
     <div style="height: 50vh"></div>
 
+    <v-row>
+      <v-col cols="12">
+        <h2 class="text-center section-title-animation">幻云科技团队成员</h2>
+      </v-col>
+    </v-row>
+
+    <v-col cols="12">
+      <v-card class="card-hover team-member-animation" elevation="4">
+        <p class="icons">开创人/程序员</p>
+        <div class="row center">
+          <div v-for="member in teamMembers" :key="member.name" class="team-member-item-animation">
+            <el-tooltip :content="member.name" placement="top-end">
+              <el-avatar :src="member.avatar" />
+            </el-tooltip>
+          </div>
+        </div>
+      </v-card>
+    </v-col>
+
+    <div style="height: 50vh"></div>
+
     <div class="button-animation">
       <v-row justify="center" class="mt-5">
         <v-col cols="12" sm="6" md="4">
@@ -90,8 +111,25 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from "gsap";
+
+import { Flip } from "gsap/Flip";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { Draggable } from "gsap/Draggable";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { EaselPlugin } from "gsap/EaselPlugin";
+import { PixiPlugin } from "gsap/PixiPlugin";
+import { TextPlugin } from "gsap/TextPlugin";
+
+
+gsap.registerPlugin(Flip,ScrollTrigger,Observer,ScrollToPlugin,Draggable,MotionPathPlugin,EaselPlugin,PixiPlugin,TextPlugin);
+
+const teamMembers = [
+  { name: 'SoulCodingYanhun-开创人', avatar: 'https://avatars.githubusercontent.com/u/155857563?v=4' },
+];
+
 
 const FrontendIcons = [
   { icon: 'angular', title: 'Angular' },
@@ -141,8 +179,6 @@ const cards = ref([
   { id: 2, icon: '', title: '🤝 交流社区', description: '幻云科技的交流社区是一个充满活力的专业社交平台。在这里，您可以与来自世界各地的专业人士和创意人士交流想法，分享经验，共同成长。' },
   { id: 3, icon: '', title: '🌐 技术支持', description: '我们为前端和后端开发者提供了全面的技术支持。无论您使用的是哪种技术，我们都有专业的资源和团队支持您。' },
 ]);
-
-gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
   // Page enter animation
@@ -241,6 +277,33 @@ onMounted(() => {
       trigger: '.full-stack',
       start: 'top 80%',
       toggleActions: 'play none none reverse',
+    },
+  });
+
+  // Team member card animation
+  gsap.from(".team-member-animation", {
+    y: 100,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".team-member-animation",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  // Team member item animation
+  gsap.from(".team-member-item-animation", {
+    scale: 0,
+    opacity: 0,
+    duration: 0.5,
+    ease: "power3.out",
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: ".team-member-item-animation",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
     },
   });
 
