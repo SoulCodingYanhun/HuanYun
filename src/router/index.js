@@ -7,6 +7,16 @@ const routes = [
     component: () => import('../view/Home.vue'),
   },
   {
+    path: '/api',
+    name: 'API',
+    component: () => import('../view/API.vue')
+  },
+  {
+    path: '/forum',
+    name: 'Forum',
+    component: () => import('../view/Forum.vue')
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('../view/Login.vue'),
