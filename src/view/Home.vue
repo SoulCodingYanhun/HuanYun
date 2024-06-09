@@ -123,6 +123,9 @@ import { EaselPlugin } from "gsap/EaselPlugin";
 import { PixiPlugin } from "gsap/PixiPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
 
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 gsap.registerPlugin(Flip,ScrollTrigger,Observer,ScrollToPlugin,Draggable,MotionPathPlugin,EaselPlugin,PixiPlugin,TextPlugin);
 
@@ -167,7 +170,7 @@ const FullstackIcons = [
 ]
 
 const register = () => {
-  console.log('注册新用户');
+  router.push("/register")
 };
 
 const learnMore = () => {

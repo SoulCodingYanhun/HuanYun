@@ -27,6 +27,10 @@ import Router from './router';
 // 引入 Vue-Clerk
 import { clerkPlugin } from 'vue-clerk/plugin'
 
+// 引入 Arco
+import ArcoVue from '@arco-design/web-vue';
+import '@arco-design/web-vue/dist/arco.css';
+
 // 创建 Vue 应用实例
 const app = createApp(App);
 
@@ -43,6 +47,8 @@ app.use(Router);
 app.use(clerkPlugin, {
   publishableKey: import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 })
+
+app.use(ArcoVue);
 
 // 挂载应用到 #app 元素
 app.mount('#app');

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <header>
+    <v-header>
       <v-app-bar :elevation="0" scroll-behavior="hide">
         <v-app-bar-title class="text-gradient"><span class="text-gradient">幻云科技</span></v-app-bar-title>
 
@@ -9,17 +9,17 @@
           <v-btn icon="mdi-api" @click="goToApi"></v-btn>
           <v-btn icon="mdi-forum" @click="goToForum"></v-btn>
           <div v-if="isLoggedIn">
-            <v-btn icon="mdi-account" @click="goToProfile"></v-btn>
+            <v-btn></v-btn>
           </div>
           <div v-else>
             <v-btn @click="goToLogin">注册/登入</v-btn>
           </div>
         </template>
       </v-app-bar>
-    </header>
-    <main>
+    </v-header>
+    <v-main>
       <router-view></router-view>
-    </main>
+    </v-main>
   </v-app>
 </template>
 
@@ -47,7 +47,7 @@ const goToProfile = () => {
 };
 
 const goToLogin = () => {
-  router.push('/register');
+  router.push('/login');
 };
 
 onMounted(() => {

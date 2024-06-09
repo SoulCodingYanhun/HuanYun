@@ -12,6 +12,11 @@ const routes = [
     component: () => import('../view/API.vue')
   },
   {
+    path: '/api/:id',
+    name: 'APIDetails',
+    component: () => import('../view/APIDetails.vue')
+  },
+  {
     path: '/forum',
     name: 'Forum',
     component: () => import('../view/Forum.vue')
@@ -19,12 +24,12 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../view/Login.vue'),
+    component: () => import('../view/Login.vue')
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('../view/Register.vue'),
+    component: () => import('../view/Register.vue')
   },
 ];
 
