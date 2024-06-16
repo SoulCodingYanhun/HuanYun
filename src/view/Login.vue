@@ -20,6 +20,8 @@
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { ElNotification } from "element-plus";
+import { Notification } from '@arco-design/web-vue';
 
 export default {
   setup() {
@@ -27,9 +29,43 @@ export default {
     const username = ref('');
     const password = ref('');
 
-    const submitForm = () => {
-      // 在这里处理表单提交
-      console.log(`用户名: ${username.value}, 密码: ${password.value}`);
+    const submitForm = async () => {
+      try {
+        const response = await fetch('https://huanyuncoding-api.oocc.cn/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: username.value,
+            password: password.value,
+          }),
+        });
+
+        if (response.status === 200) {
+          const data = await response.json();
+          Notification.success({
+            title: '系统',
+            content: `登入成功！${username.value}`,
+            position: 'bottomRight'
+          })
+          console.log(data);
+        } else {
+          Notification.error({
+            title: '系统',
+            content: '登入失败！可能是你的用户名和密码错误！再或者是没有这个用户',
+            position: 'bottomRight'
+          })
+        }
+      } catch (error) {
+        console.error(error);
+        Notification.error({
+          title: '系统',
+          content: '登入失败,请稍后再试',
+          position: 'bottomRight'
+        })
+        // 处理登录失败的逻辑
+      }
     };
 
     const goToRegister = () => {
@@ -41,9 +77,9 @@ export default {
       username,
       password,
       submitForm,
-      goToRegister
+      goToRegister,
     };
-  }
+  },
 };
 </script>
 

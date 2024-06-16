@@ -8,10 +8,12 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { resolve } from "path";
 import { VitePWA } from "vite-plugin-pwa";
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+import md from 'vite-plugin-md'
 
 export default defineConfig({
   plugins: [
     vue(),
+    md(),
     Vuetify(),
     ViteFonts({
       google: {
@@ -71,5 +73,5 @@ export default defineConfig({
       },
     },
   },
-
+  assetsInclude: ['**/*.md']
 });
