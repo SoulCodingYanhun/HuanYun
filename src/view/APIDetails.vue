@@ -1,34 +1,40 @@
 <template>
-  <a-layout>
-    <a-layout-sider>
-      <a-menu
-          :style="{ height: '100%' }"
-          :default-open-keys="['0']"
-          :default-selected-keys="['0_1']"
-          show-collapse-button
-          mode="pop" showCollapseButton
-      >
-        <template v-for="(item, index) in menuItems" :key="index">
-          <a-sub-menu v-if="item.children" :key="item.key">
-            <template #title>{{ item.title }}</template>
-            <a-menu-item v-for="(child, childIndex) in item.children" :key="child.key" @click="handleMenuItemClick(child.file)">
-              <span>{{ child.title }}</span>
-            </a-menu-item>
-          </a-sub-menu>
-          <a-menu-item v-else :key="item.key" @click="handleMenuItemClick(item.file)">
-            <span>{{ item.title }}</span>
-          </a-menu-item>
-        </template>
-      </a-menu>
-    </a-layout-sider>
+  <div v-if="tf !== false">
     <a-layout>
-      <a-layout-content>
-        <div class="markdown-content">
-          <div v-html="renderedMarkdown"></div>
-        </div>
-      </a-layout-content>
+      <a-layout-sider>
+        <a-menu
+            :style="{ height: '100%' }"
+            :default-open-keys="['0']"
+            :default-selected-keys="['0_1']"
+            show-collapse-button
+            mode="pop" showCollapseButton
+        >
+          <template v-for="(item, index) in menuItems" :key="index">
+            <a-sub-menu v-if="item.children" :key="item.key">
+              <template #title>{{ item.title }}</template>
+              <a-menu-item v-for="(child, childIndex) in item.children" :key="child.key" @click="handleMenuItemClick(child.file)">
+                <span>{{ child.title }}</span>
+              </a-menu-item>
+            </a-sub-menu>
+            <a-menu-item v-else :key="item.key" @click="handleMenuItemClick(item.file)">
+              <span>{{ item.title }}</span>
+            </a-menu-item>
+          </template>
+        </a-menu>
+      </a-layout-sider>
+      <a-layout>
+        <a-layout-content>
+          <div class="markdown-content">
+            <div v-html="renderedMarkdown"></div>
+          </div>
+        </a-layout-content>
+      </a-layout>
     </a-layout>
-  </a-layout>
+  </div>
+  <div v-else>
+    <el-empty description="没有此API文档">
+    </el-empty>
+  </div>
 </template>
 
 <script setup>
@@ -38,27 +44,55 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark.css'
 import axios from 'axios'
 import MarkdownIt from 'markdown-it'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const route = useRoute()
 const mdFiles = ref([])
 const selectedFileContent = ref('')
+const specialKeywords = ['async', 'await', 'readonly', 'as', 'is', 'keyof', 'typeof', 'infer'];
+const specialTypes = ['unknown', 'never', 'any'];
+let tf = ref(true);
 
 const md = new MarkdownIt({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
-        return hljs.highlight(str, { language: lang }).value
+        let highlighted = hljs.highlight(str, { language: lang }).value;
+
+        if (lang === 'typescript' || lang === 'ts') {
+          specialKeywords.forEach(keyword => {
+            const regex = new RegExp(`(\\b${keyword}\\b)(?![^<]*>|[^<>]*<\/)`, 'g');
+            highlighted = highlighted.replace(regex, `<span class="hljs-keyword" data-type="special">$1</span>`);
+          });
+
+          specialTypes.forEach(type => {
+            const regex = new RegExp(`(\\b${type}\\b)(?![^<]*>|[^<>]*<\/)`, 'g');
+            highlighted = highlighted.replace(regex, `<span class="hljs-type" data-type="special">$1</span>`);
+          });
+        }
+
+        return highlighted;
       } catch (__) {}
     }
 
-    return ''
+    return '';
   }
 })
 const renderedMarkdown = computed(() => md.render(selectedFileContent.value))
 
 const importMarkdownFiles = async () => {
   let files = ''
-  if (route.params.id === "SAlgorithm") files = await import.meta.glob(`@/API/SAlgorithm/**/*.md`)
+  if (route.params.id === "SAlgorithm"){
+    files = await import.meta.glob(`@/API/SAlgorithm/**/*.md`);
+    tf.value = true
+  }
+  else {
+    tf.value = false
+    return
+  }
   mdFiles.value = Object.keys(files)
 }
 
@@ -138,47 +172,17 @@ onMounted(async () => {
   background-color: rgba(255, 255, 255, 0.2); /* 鼠标悬停和选中时的背景颜色 */
 }
 
-.markdown-content {
-  padding: 40px; /* 增加内边距 */
-  background-color: #f8f8f8; /* 浅灰色背景 */
-  border-radius: 8px; /* 圆角 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+.special-effect {
+  opacity: 0;
 }
 
-.markdown-content h1,
-.markdown-content h2,
-.markdown-content h3,
-.markdown-content h4,
-.markdown-content h5,
-.markdown-content h6 {
-  color: #333; /* 标题文字颜色 */
+.special-effect[data-effect="typing"] {
+  opacity: 1;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.markdown-content p {
-  line-height: 1.6; /* 增加段落行高 */
-}
-
-.markdown-content a {
-  color: #1890ff; /* 链接颜色 */
-  text-decoration: none; /* 去掉下划线 */
-}
-
-.markdown-content a:hover {
-  text-decoration: underline; /* 鼠标悬停时显示下划线 */
-}
-
-.markdown-content pre {
-  margin: 1em 0;
-  background-color: #282c34; /* 深灰色背景 */
-  border-radius: 4px; /* 圆角 */
-  padding: 16px; /* 内边距 */
-  overflow: auto; /* 允许滚动 */
-}
-
-.markdown-content pre code {
-  display: block;
-  background-color: transparent; /* 透明背景 */
-  color: #abb2bf; /* 代码颜色 */
-  font-family: 'Source Code Pro', monospace;
+.special-effect[data-effect="scroll"] {
+  transition: opacity 0.5s, transform 0.5s;
 }
 </style>

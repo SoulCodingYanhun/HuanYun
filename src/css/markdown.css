@@ -1,0 +1,358 @@
+.markdown-content {
+    padding: 40px; /* 增加内边距 */
+//background-color: #f8f8f8; /* 浅灰色背景 */
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+    color: #333; /* 标题文字颜色 */
+}
+
+.markdown-content p {
+    line-height: 1.6; /* 增加段落行高 */
+}
+
+.markdown-content a {
+    color: #1890ff; /* 链接颜色 */
+    text-decoration: none; /* 去掉下划线 */
+}
+
+.markdown-content a:hover {
+    text-decoration: underline; /* 鼠标悬停时显示下划线 */
+}
+
+/* 基础代码块样式 */
+.markdown-content pre {
+    background-color: #282c34;
+    border-radius: 4px;
+    padding: 16px;
+    overflow: auto;
+    margin: 1em 0;
+}
+
+.markdown-content pre code {
+    display: block;
+    background-color: transparent;
+    color: #abb2bf;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* 通用语法高亮 */
+.hljs-keyword { color: #c678dd; }
+.hljs-built_in { color: #e6c07b; }
+.hljs-type { color: #e6c07b; }
+.hljs-literal { color: #56b6c2; }
+.hljs-number { color: #d19a66; }
+.hljs-regexp { color: #98c379; }
+.hljs-string { color: #98c379; }
+.hljs-subst { color: #e06c75; }
+.hljs-symbol { color: #61aeee; }
+.hljs-class { color: #e6c07b; }
+.hljs-function { color: #61aeee; }
+.hljs-title { color: #61aeee; }
+.hljs-params { color: #d19a66; }
+.hljs-comment { color: #5c6370; font-style: italic; }
+.hljs-doctag { color: #c678dd; }
+.hljs-meta { color: #e06c75; }
+.hljs-section { color: #e06c75; }
+.hljs-name { color: #e06c75; }
+.hljs-attribute { color: #98c379; }
+.hljs-variable { color: #d19a66; }
+
+/* JavaScript 特定样式 */
+.language-javascript .hljs-keyword { color: #c678dd; }
+.language-javascript .hljs-built_in { color: #e6c07b; }
+.language-javascript .hljs-function { color: #61aeee; }
+.language-javascript .hljs-class-name { color: #e6c07b; }
+.language-javascript .hljs-attr { color: #d19a66; }
+.language-javascript .hljs-template-variable { color: #d19a66; }
+
+/* Python 特定样式 */
+.language-python .hljs-keyword { color: #ff79c6; }
+.language-python .hljs-function { color: #50fa7b; }
+.language-python .hljs-decorator { color: #bd93f9; }
+.language-python .hljs-class { color: #8be9fd; }
+
+/* Java 特定样式 */
+.language-java .hljs-keyword { color: #ff79c6; }
+.language-java .hljs-function { color: #50fa7b; }
+.language-java .hljs-class-name { color: #8be9fd; }
+.language-java .hljs-annotation { color: #ff79c6; }
+
+/* C++ 特定样式 */
+.language-cpp .hljs-keyword { color: #ff79c6; }
+.language-cpp .hljs-function { color: #50fa7b; }
+.language-cpp .hljs-class-name { color: #8be9fd; }
+.language-cpp .hljs-preprocessor { color: #ff79c6; }
+
+/* HTML 特定样式 */
+.language-html .hljs-tag {
+    color: #ff79c6;
+}
+
+.language-html .hljs-name {
+    color: #ff79c6;
+}
+
+.language-html .hljs-attr {
+    color: #50fa7b;
+}
+
+.language-html .hljs-string {
+    color: #f1fa8c;
+}
+
+.language-html .hljs-attribute {
+    color: #50fa7b;
+}
+
+.language-html .hljs-symbol {
+    color: #ff79c6;
+}
+
+.language-html .hljs-bullet {
+    color: #8be9fd;
+}
+
+.language-html .hljs-built_in {
+    color: #8be9fd;
+}
+
+.language-html .hljs-literal {
+    color: #bd93f9;
+}
+
+.language-html .hljs-number {
+    color: #bd93f9;
+}
+
+.language-html .hljs-selector-id {
+    color: #50fa7b;
+}
+
+.language-html .hljs-selector-class {
+    color: #50fa7b;
+}
+
+.language-html .hljs-selector-attr {
+    color: #50fa7b;
+}
+
+.language-html .hljs-selector-pseudo {
+    color: #50fa7b;
+}
+
+.language-html .hljs-template-tag {
+    color: #ff79c6;
+}
+
+.language-html .hljs-template-variable {
+    color: #f8f8f2;
+}
+
+.language-html .hljs-addition {
+    color: #50fa7b;
+}
+
+.language-html .hljs-deletion {
+    color: #ff5555;
+}
+
+.language-html .hljs-emphasis {
+    font-style: italic;
+}
+
+.language-html .hljs-strong {
+    font-weight: bold;
+}
+
+/* 内嵌 CSS 样式 */
+.language-html .hljs-style {
+    color: #8be9fd;
+}
+
+.language-html .hljs-style .hljs-attribute {
+    color: #50fa7b;
+}
+
+/* 内嵌 JavaScript 样式 */
+.language-html .hljs-script {
+    color: #f8f8f2;
+}
+
+.language-html .hljs-script .hljs-keyword {
+    color: #ff79c6;
+}
+/* TypeScript 特定样式 */
+.language-typescript .hljs-keyword,
+.language-ts .hljs-keyword {
+    color: #ff79c6;
+}
+
+.language-typescript .hljs-built_in,
+.language-ts .hljs-built_in {
+    color: #8be9fd;
+}
+
+.language-typescript .hljs-type,
+.language-ts .hljs-type {
+    color: #8be9fd;
+    font-style: italic;
+}
+
+.language-typescript .hljs-literal,
+.language-ts .hljs-literal {
+    color: #bd93f9;
+}
+
+.language-typescript .hljs-number,
+.language-ts .hljs-number {
+    color: #bd93f9;
+}
+
+.language-typescript .hljs-regexp,
+.language-ts .hljs-regexp {
+    color: #ff5555;
+}
+
+.language-typescript .hljs-string,
+.language-ts .hljs-string {
+    color: #f1fa8c;
+}
+
+.language-typescript .hljs-subst,
+.language-ts .hljs-subst {
+    color: #f8f8f2;
+}
+
+.language-typescript .hljs-symbol,
+.language-ts .hljs-symbol {
+    color: #ff79c6;
+}
+
+.language-typescript .hljs-class,
+.language-ts .hljs-class {
+    color: #50fa7b;
+}
+
+.language-typescript .hljs-function,
+.language-ts .hljs-function {
+    color: #50fa7b;
+}
+
+.language-typescript .hljs-title,
+.language-ts .hljs-title {
+    color: #50fa7b;
+}
+
+.language-typescript .hljs-params,
+.language-ts .hljs-params {
+    color: #f8f8f2;
+}
+
+.language-typescript .hljs-comment,
+.language-ts .hljs-comment {
+    color: #6272a4;
+    font-style: italic;
+}
+
+.language-typescript .hljs-doctag,
+.language-ts .hljs-doctag {
+    color: #ff79c6;
+}
+
+.language-typescript .hljs-meta,
+.language-ts .hljs-meta {
+    color: #6272a4;
+}
+
+.language-typescript .hljs-meta-keyword,
+.language-ts .hljs-meta-keyword {
+    color: #ff79c6;
+}
+
+.language-typescript .hljs-meta-string,
+.language-ts .hljs-meta-string {
+    color: #f1fa8c;
+}
+
+/* TypeScript 特有元素 */
+.language-typescript .hljs-decorator,
+.language-ts .hljs-decorator {
+    color: #bd93f9;
+}
+
+.language-typescript .hljs-interface,
+.language-ts .hljs-interface {
+    color: #8be9fd;
+    font-style: italic;
+}
+
+.language-typescript .hljs-namespace,
+.language-ts .hljs-namespace {
+    color: #ff79c6;
+}
+
+.language-typescript .hljs-enum,
+.language-ts .hljs-enum {
+    color: #8be9fd;
+}
+
+.language-typescript .hljs-tuple,
+.language-ts .hljs-tuple {
+    color: #8be9fd;
+}
+
+.language-typescript .hljs-generic,
+.language-ts .hljs-generic {
+    color: #8be9fd;
+}
+
+/* TypeScript 特殊关键字样式 */
+.language-typescript .hljs-keyword[data-type="special"],
+.language-ts .hljs-keyword[data-type="special"] {
+    color: #ff79c6;
+    font-weight: bold;
+}
+
+/* TypeScript 特殊类型关键字样式 */
+.language-typescript .hljs-type[data-type="special"],
+.language-ts .hljs-type[data-type="special"] {
+    color: #8be9fd;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.markdown-content img {
+    max-width: 100%; /* 确保图片不会超出容器宽度 */
+    height: auto; /* 保持图片比例 */
+    display: block; /* 使图片独占一行 */
+    margin: 20px auto; /* 上下间距20px，左右居中 */
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 轻微阴影效果 */
+}
+
+/* 针对小图片的特殊处理 */
+.markdown-content img[width="300"],
+.markdown-content img[width="400"],
+.markdown-content img[width="500"] {
+    display: inline-block; /* 允许小图片内联显示 */
+    margin: 10px; /* 四周留出一些间距 */
+}
+
+/* 图片标题样式 */
+.markdown-content img + em {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}

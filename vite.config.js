@@ -8,12 +8,10 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { resolve } from "path";
 import { VitePWA } from "vite-plugin-pwa";
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
-import md from 'vite-plugin-md'
 
 export default defineConfig({
   plugins: [
     vue(),
-    md(),
     Vuetify(),
     ViteFonts({
       google: {
@@ -41,7 +39,7 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: /(.*?)\.(png|jpe?g|svg|gif|bmp|psd|tiff|tga|eps)/, // 图片缓存
+            urlPattern: /(.*?)\.(png|jpeg|svg|gif|bmp|psd|tiff|tga|eps)/, // 图片缓存
             handler: "CacheFirst",
             options: {
               cacheName: "image-cache",
@@ -72,6 +70,5 @@ export default defineConfig({
         pure_funcs: ["console.log"],
       },
     },
-  },
-  assetsInclude: ['**/*.md']
+  }
 });

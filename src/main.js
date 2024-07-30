@@ -1,54 +1,111 @@
-// 引入 Vue 的 createApp 函数和 App 组件
 import { createApp } from 'vue';
 import App from './App.vue';
 
-// 引入 Vuetify 的样式和功能
+// Vuetify
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
-// 创建 Vuetify 实例
+// Element Plus
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
+
+// Arco Design
+import ArcoVue from '@arco-design/web-vue';
+import '@arco-design/web-vue/dist/arco.css';
+
+// Custom CSS
+import '@/css/markdown.css';
+
+// Router
+import Router from './router';
+
+// Vue-Clerk
+import { clerkPlugin } from 'vue-clerk/plugin'
+
+// Vuetify 配置
 const vuetify = createVuetify({
   components,
   directives,
   icons: {
-    iconfont: 'mdi', // 设置使用 Material Design Icons
+    iconfont: 'mdi',
+  },
+  theme: {
+    defaultTheme: 'light',
+    themes: {
+      light: {
+        dark: false,
+        colors: {
+          primary: '#1976D2',
+          secondary: '#424242',
+          accent: '#82B1FF',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107',
+          background: '#FFFFFF',
+          surface: '#FAFAFA',
+          'on-background': '#000000',
+          'on-surface': '#000000',
+        },
+      },
+      dark: {
+        dark: true,
+        colors: {
+          primary: '#2196F3',
+          secondary: '#424242',
+          accent: '#FF4081',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107',
+          background: '#121212',
+          surface: '#212121',
+          'on-background': '#FFFFFF',
+          'on-surface': '#FFFFFF',
+        },
+      },
+    },
+    options: {
+      customProperties: true,
+      variations: {
+        colors: ['primary', 'secondary'],
+        lighten: 5,
+        darken: 5,
+      },
+    },
   },
 });
-
-// 引入 Element Plus
-import ElementPlus from 'element-plus';
-
-// 引入 Router
-import Router from './router';
-
-// 引入 Vue-Clerk
-import { clerkPlugin } from 'vue-clerk/plugin'
-
-// 引入 Arco
-import ArcoVue from '@arco-design/web-vue';
-import '@arco-design/web-vue/dist/arco.css';
 
 // 创建 Vue 应用实例
 const app = createApp(App);
 
-// 使用 Vuetify 插件
+// 使用插件
 app.use(vuetify);
-
-// 使用 Element Plus 插件
 app.use(ElementPlus);
-
-// 使用 Router 插件
+app.use(ArcoVue);
 app.use(Router);
-
-// 使用 Vue-Clerk 插件
 app.use(clerkPlugin, {
   publishableKey: import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
-})
+});
 
-app.use(ArcoVue);
-
-// 挂载应用到 #app 元素
+// 挂载应用
 app.mount('#app');
+
+// 主题管理
+const themeManager = {
+  setTheme(theme) {
+    vuetify.theme.global.name.value = theme;
+    document.body.setAttribute('arco-theme', theme);
+    document.documentElement.className = theme === 'dark' ? 'dark' : '';
+  },
+  toggleTheme() {
+    const currentTheme = vuetify.theme.global.name.value;
+    this.setTheme(currentTheme === 'light' ? 'dark' : 'light');
+  }
+};
+
+// 将主题管理器暴露给全局，以便在组件中使用
+app.config.globalProperties.$themeManager = themeManager;

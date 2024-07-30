@@ -3,33 +3,50 @@
     <div class="page-enter-animation">
       <v-row justify="center" align="center" style="height: 100vh">
         <v-col cols="12" sm="8" md="6">
-          <h1 class="text-center">欢迎来到<span class="text-gradient">幻云科技</span></h1>
-          <p class="text-center">
+          <h1 class="text-center h11">欢迎来到<span class="text-gradient">幻云科技</span></h1>
+          <p class="text-center p11">
             开启您的创新之旅。在这里，您将发现一个充满无限可能性的空间，旨在激发您的创意火花，提升工作效率。
           </p>
         </v-col>
       </v-row>
     </div>
 
-    <v-row>
-      <v-col cols="12">
-        <h1 class="text-center section-title-animation">特色</h1>
-      </v-col>
-    </v-row>
+    <section class="features-section py-16">
+      <v-container>
+        <v-row justify="center" class="mb-12">
+          <v-col cols="12" md="8">
+            <h2 class="text-h3 font-weight-light text-center section-title-animation">
+              我们的<span class="font-weight-bold primary--text">特色</span>
+            </h2>
+            <p class="text-subtitle-1 text-center mt-4 grey--text text--darken-1">
+              探索幻云科技为您带来的独特优势
+            </p>
+          </v-col>
+        </v-row>
 
-    <div class="card-animation">
-      <v-row style="height: 70vh">
-        <v-col v-for="card in cards" :key="card.id" cols="12" sm="4">
-          <v-card class="card-hover" elevation="4">
-            <v-card-title>
-              <v-icon size="24" class="mr-2">{{ card.icon }}</v-icon>
-              {{ card.title }}
-            </v-card-title>
-            <v-card-text>{{ card.description }}</v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </div>
+        <v-row class="card-animation">
+          <v-col v-for="card in cards" :key="card.id" cols="12" sm="6" md="4" class="mb-6">
+            <v-card class="feature-card fill-height d-flex flex-column" elevation="2">
+              <v-card-text>
+                <div class="d-flex align-center mb-4">
+                  <v-avatar :color="card.color" size="48" class="mr-4">
+                    <v-icon dark>{{ card.icon }}</v-icon>
+                  </v-avatar>
+                  <h3 class="text-h5 font-weight-medium">{{ card.title }}</h3>
+                </div>
+                <p class="body-1 grey--text text--darken-1">{{ card.description }}</p>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn text :color="card.color" class="ml-2 mt-2">
+                  了解更多
+                  <v-icon right small>mdi-arrow-right</v-icon>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
 
     <v-row>
       <v-col cols="12">
@@ -71,38 +88,66 @@
 
     <div style="height: 50vh"></div>
 
-    <v-row>
-      <v-col cols="12">
-        <h2 class="text-center section-title-animation">幻云科技团队成员</h2>
-      </v-col>
-    </v-row>
-
     <v-col cols="12">
-      <v-card class="card-hover team-member-animation" elevation="4">
-        <p class="icons">开创人/程序员</p>
-        <div class="row center">
-          <div v-for="member in teamMembers" :key="member.name" class="team-member-item-animation">
-            <el-tooltip :content="member.name" placement="top-end">
-              <el-avatar :src="member.avatar" />
-            </el-tooltip>
-          </div>
-        </div>
+      <v-card class="team-card pa-6" elevation="4">
+        <h3 class="text-h5 font-weight-bold mb-4 text-center primary--text">
+          <v-icon large color="primary" class="mr-2">mdi-account-group</v-icon>
+          开创人 / 程序员
+        </h3>
+        <v-divider class="mb-6"></v-divider>
+        <v-row justify="center" align="center">
+          <v-col v-for="member in teamMembers" :key="member.name" cols="auto" class="text-center">
+            <v-hover v-slot="{ hover }">
+              <v-avatar size="60" class="ma-3 team-member-avatar" :class="{ 'on-hover': hover }">
+                <v-img :src="member.avatar" :alt="member.name">
+                  <template v-slot:placeholder>
+                    <v-row class="fill-height ma-0" align="center" justify="center">
+                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
+              </v-avatar>
+            </v-hover>
+            <p class="mt-2 font-weight-medium">{{ member.name }}</p>
+            <p class="caption text-caption">{{ member.role }}</p>
+          </v-col>
+        </v-row>
       </v-card>
     </v-col>
 
     <div style="height: 50vh"></div>
 
-    <div class="button-animation">
-      <v-row justify="center" class="mt-5">
-        <v-col cols="12" sm="6" md="4">
-          <h2 class="text-center">🌟 加入我们</h2>
-          <p class="text-center">
-            幻云科技期待您的加入。让我们一起探索科技的边界，共同创造一个更加美好的未来。
-          </p>
-          <div class="text-center">
-            <el-button type="primary" @click="register" class="mr-3">立即注册</el-button>
-            <el-button @click="learnMore" type="button">了解更多</el-button>
-          </div>
+    <div class="join-us-section button-animation">
+      <v-row justify="center" align="center" class="mt-10">
+        <v-col cols="12" sm="8" md="6" lg="5">
+            <h2 class="text-h4 font-weight-bold mb-4 text-center primary--text">
+              🌟 加入我们
+            </h2>
+            <p class="text-body-1 text-center mb-6">
+              幻云科技期待您的加入。让我们一起探索科技的边界，共同创造一个更加美好的未来。
+            </p>
+            <div class="d-flex justify-center">
+              <v-btn
+                  x-large
+                  color="primary"
+                  class="mr-4 text-capitalize font-weight-bold"
+                  elevation="2"
+                  @click="register"
+              >
+                立即注册
+                <v-icon right>mdi-arrow-right</v-icon>
+              </v-btn>
+              <v-btn
+                  x-large
+                  outlined
+                  color="secondary"
+                  class="text-capitalize font-weight-bold"
+                  @click="learnMore"
+              >
+                了解更多
+                <v-icon right>mdi-information-outline</v-icon>
+              </v-btn>
+            </div>
         </v-col>
       </v-row>
     </div>
@@ -122,6 +167,7 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { EaselPlugin } from "gsap/EaselPlugin";
 import { PixiPlugin } from "gsap/PixiPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
+import Cookies from 'js-cookie';
 
 import { useRouter } from 'vue-router'
 
@@ -170,7 +216,20 @@ const FullstackIcons = [
 ]
 
 const register = () => {
-  router.push("/register")
+  const user = Cookies.get('user') ? JSON.parse(Cookies.get('user')) : { login: false, time: 0 };
+
+  if (!user.login) {
+    // 如果 login 为 false，则跳转到注册页面
+    router.push('/register');
+  } else {
+    // 如果 login 为 true，则跳转到个人资料页面
+    router.push('/profile');
+  }
+
+  // 如果 cookie 中没有 user 数据，则新建一个 user 数据
+  if (!Cookies.get('user')) {
+    Cookies.set('user', JSON.stringify({ login: false, time: 0 }));
+  }
 };
 
 const learnMore = () => {
@@ -184,6 +243,10 @@ const cards = ref([
 ]);
 
 onMounted(() => {
+
+
+  gsap.from('.h11', { opacity: 0, y: -50, duration: 1, delay: 0.2 });
+  gsap.from('.p11', { opacity: 0, y: 50, duration: 1, delay: 0.4 });
   // Page enter animation
   gsap.from('.page-enter-animation', {
     y: '100%',
@@ -191,7 +254,7 @@ onMounted(() => {
     ease: 'power3.out',
   });
 
-  // Title and paragraph animations
+  // 标题和段落动画
   gsap.from('.title-animation', {
     x: -100,
     opacity: 0,
@@ -216,7 +279,7 @@ onMounted(() => {
     },
   });
 
-  // Section title animations
+  // 章节标题动画
   gsap.from('.section-title-animation', {
     y: -50,
     opacity: 0,
@@ -229,7 +292,7 @@ onMounted(() => {
     },
   });
 
-  // Card animations
+  // 卡片动画
   gsap.from('.card-animation .card-hover', {
     y: 100,
     opacity: 0,
@@ -323,11 +386,67 @@ onMounted(() => {
       toggleActions: 'play none none reverse',
     },
   });
+
+  // 新添加的动画效果
+  gsap.from('.join-us-section', {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.join-us-section',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    },
+  });
+
+  gsap.from('.join-us-card', {
+    scale: 0.9,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'back.out(1.7)',
+    scrollTrigger: {
+      trigger: '.join-us-card',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse',
+    },
+  });
+
+  gsap.from('.button-animation .v-btn', {
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.2,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.button-animation',
+      start: 'top 80%',
+      toggleActions: 'play none none reverse'
+    }
+  });
 });
 
 </script>
 
 <style scoped>
+.join-us-section {
+  //background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 60px 0;
+  border-radius: 16px;
+  margin-top: 40px;
+}
+
+.join-us-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.join-us-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
 .home {
   text-align: center;
   margin: 0 auto;
@@ -357,7 +476,6 @@ p {
 
 .card-hover {
   transition: transform 0.3s ease-in-out;
-  background-color: #f8f8f8;
   border-radius: 8px;
   padding: 16px;
 }
@@ -417,5 +535,49 @@ button:hover {
     padding: 8px 16px;
     margin: 5px;
   }
+}
+
+.team-card {
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.team-member-avatar {
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.team-member-avatar.on-hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.feature-card {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+}
+
+.v-card__text {
+  flex-grow: 1;
+}
+
+.v-avatar {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .v-avatar {
+  transform: scale(1.1);
 }
 </style>

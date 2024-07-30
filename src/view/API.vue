@@ -35,6 +35,7 @@ const apis = ref([
   },
 ])
 
+
 const showDetails = (id) => {
   router.push(`/api/${id}`)
 }
